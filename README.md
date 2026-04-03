@@ -33,7 +33,7 @@
 ## Compiling to Standalone Executable
 You can compile SonicRoute into a lightweight Windows `.exe` using the built-in fast packager:
 ```bash
-npx @electron/packager . SonicRoute --platform=win32 --arch=x64 --out=dist --icon=build/icon.png --overwrite
+npx @electron/packager . SonicRoute --platform=win32 --arch=x64 --out=dist --icon=build/icon.ico --overwrite
 ```
 The standalone app will be outputted to `/dist/SonicRoute-win32-x64/`.
 
