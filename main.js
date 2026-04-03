@@ -34,7 +34,7 @@ expressApp.get('/', (req, res) => {
     <html>
     <head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-      <title>Soundboard Remote</title>
+      <title>SonicRoute Remote</title>
       <style>
         body {
           background-color: #0c0f14;
@@ -81,7 +81,7 @@ expressApp.get('/', (req, res) => {
       </style>
     </head>
     <body>
-      <h1>Remote Soundboard</h1>
+      <h1>SonicRoute Remote</h1>
       
       <!-- Mobile Panic Button -->
       <button class="sound-btn" style="width: 100%; max-width: 600px; background: rgba(255, 50, 50, 0.2); border-color: #ff3232; color: #ff3232; margin-bottom: 20px; font-size: 18px;" onclick="stopAll()">
@@ -156,6 +156,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 900,
     height: 700,
+    icon: path.join(__dirname, 'build/icon.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -193,11 +194,12 @@ app.whenReady().then(() => {
   createWindow();
 
   // Create System Tray
-  const trayIconBase64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAQklEQVQ4T2NkYGD4z8DAwMgAMwBZMzIwinHxMTAwMPyH0mQwG4nLwMTEyIgbEEYzRhmg+JExhIFRgwE2mDGaMcoAAG7dEQP8L+8iAAAAAElFTkSuQmCC'; 
-  tray = new Tray(nativeImage.createFromDataURL(trayIconBase64));
-  tray.setToolTip('Global Soundboard');
+  const iconPath = path.join(__dirname, 'build/icon.png');
+  const trayIcon = nativeImage.createFromPath(iconPath).resize({ width: 16, height: 16 });
+  tray = new Tray(trayIcon);
+  tray.setToolTip('SonicRoute');
   tray.setContextMenu(Menu.buildFromTemplate([
-      { label: 'Show Soundboard', click: () => mainWindow.show() },
+      { label: 'Show SonicRoute', click: () => mainWindow.show() },
       { label: 'Quit', click: () => { isQuitting = true; app.quit(); } }
   ]));
   tray.on('double-click', () => mainWindow.show());
