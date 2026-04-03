@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+  <title>Global Soundboard</title>
+  <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <h1>Soundboard</h1>
+      <div class="controls">
+        <div class="device-selector">
+          <label for="audio-output">Output Device:</label>
+          <select id="audio-output">
+            <option value="default">Default</option>
+          </select>
+        </div>
+        <button id="add-sound-btn" class="glass-button primary-glow">Add Sound</button>
+        <button id="stop-all-btn" class="glass-button">🛑 STOP ALL</button>
+        <button id="show-qr-btn" class="glass-button">📱 Remote</button>
+      </div>
+    </header>
+
+    <main>
+      <div id="sounds-list" class="sounds-list">
+        <!-- Sound items will be injected here -->
+      </div>
+    </main>
+  </div>
+
+  <div id="qr-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2>Scan to open Remote</h2>
+      <img id="qr-code-img" alt="Loading QR..." />
+      <button id="close-qr-btn" class="glass-button">Close</button>
+    </div>
+  </div>
+
+  <div id="drop-overlay">
+    <h2>Drop audio files here!</h2>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
